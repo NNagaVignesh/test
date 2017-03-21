@@ -60,7 +60,7 @@ public class Predict {
           }
          d=rs.getTimestamp("bd_childdob");
          //System.out.println(rs.getTimestamp("bd_childdob").getTime());INSERT INTO smsdb.sms_send (mobile_no,message,valid_till,inserted_by,inserted_date) VALUES ()
-         calcDays(d.getTime(),rs.getString("child_id"),rs.getLong("bd_fcontactno"),1,"Dear Parents,Your baby due for OPV, HepB, BCG vaccination.Please contact the nearest hospital");
+         calcDays(d.getTime(),rs.getString("child_id"),rs.getLong("bd_fcontactno"),1,"Dear Parents,Your baby due for OPV-2 vaccination.Please contact the nearest hospital");
          calcDays(d.getTime(),rs.getString("child_id"),rs.getLong("bd_fcontactno"),45,"Dear Parents,Your baby due for OPV1, Penta-1, IPV1 vaccination.Please contact the nearest hospital");
          calcDays(d.getTime(),rs.getString("child_id"),rs.getLong("bd_fcontactno"),76,"Dear Parents,Your baby due for OPV2, Penta-2 vaccination.Please contact the nearest hospital");
          calcDays(d.getTime(),rs.getString("child_id"),rs.getLong("bd_fcontactno"),106,"Dear Parents,Your baby due for OPV3, Penta-3 vaccination.Please contact the nearest hospital");
