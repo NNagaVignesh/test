@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head><title>Log In</title>
+	<!-- Latest compiled and minified CSS <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+		
+                <link rel="stylesheet" href="./materialize/materialize.css">
+                <link rel="stylesheet" href="./materialize/materialize.min.css">
+		 <script src="./jquery.js"></script>
+                 <script src="./materialize/materialize.js"></script>
+                 <script src="./materialize/materialize.min.js"></script>
+                 <!--?{"Un":""+Un,"Ps":""+Ps},//'Un='+encodeURIComponent(Un)+'&'+'Ps='+encodeURIComponent(Ps),-->
+            <script>
+            var send=function()
+             {
+                 console.log("tets");
+                 var Un=$('#Uname').val();
+                 var Ps=$('#Pass').val();
+                  
+                 $.ajax(
+                     {
+                    
+                     url:"Connect",
+                     data: {"Un":""+Un,"Ps":""+Ps},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                          
+                         
+                        var a=data.toString();console.log(a);
+                        if(a==="y"){
+                            load();
+                        }
+                        else{
+                            alert("\t\tSorry!!\nIncorrect Username/Password\n\t  Please try again");
+                        }
+                     
+                 },
+                 error:function(data){
+                     alert(data);
+                 }
+                 });
+                };
+    var load=function(){
+                     
+                     window.location.href="./profile.html";
+                 }
+                 
+        </script>
+</head>
+
+<style>
+form {
+    border: 3px solid #f1f1f1;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+.centering {
+	margin-top: 10%;
+  	
+ 	
+  	 
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+    .cancelbtn {
+       width: 100%;
+    }
+}
+p {
+	font-family: Sans-Serif;
+	font-size: 40px;
+}
+</style>
+<body>
+
+  <div class="container">
+  <p>Vaccination Alert</p>
+  <div class="col-sm-3"></div>
+  
+  <div class="col-sm-6 centering">
+	
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" id="Uname" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="Pass" required>
+        
+    <button type="submit" onclick="send();">Login</button>
+    
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    
+  </div>
+  </div>
+
+
+</body>
+</html>

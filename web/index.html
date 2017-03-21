@@ -1,0 +1,121 @@
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>BITAPPS-Log In</title>
+        <link href="./prism.css" rel="stylesheet">
+        <link href="./ghpages.css" type="text/css" rel="stylesheet" media="screen,projection">
+        
+        <link href="../prism/prism.css" rel="stylesheet" type="text/css">
+        <!--<link href="./materialize/materialize.min.css" rel="stylesheet"><link href="./materialize/materialize.css" rel="stylesheet" type="text/css">-->
+        <script src="./jquery.js"></script>
+        <script src="./materialize/materialize.js"></script>
+         <script src="./materialize/materialize.min.js"></script>
+         <script src="./prism/prism.js"></script>
+
+         
+         <script>
+            var send=function()
+             {
+                 console.log("tets");
+                 var Un=$('#Uname').val();
+                 var Ps=$('#Pass').val();
+                  
+                 $.ajax(
+                     {
+                    
+                     url:"./Connect",
+                     data: {"Un":""+Un,"Ps":""+Ps},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                          
+                         
+                        var a=data.toString();
+                        if(a==="y"){
+                            console.log(a);
+                            load();
+                        }
+                        else{
+                            alert("\t\tSorry!!\nIncorrect Username/Password\n\t  Please try again");
+                        }
+                     
+                 },
+                 error:function(data){
+                     alert(data);
+                 }
+                 });
+                };
+    var load=function(){
+                     
+                     window.location.href="./Pages/form1.html";
+                 };
+                 
+        </script>
+        <style>
+            .place{
+                margin-top: 10%;
+            }
+            body{
+                background-color: #fff;
+                height:100%;
+                width:100%;
+                
+            }
+            .pad{
+                padding-top: 20px;
+            }
+            .pad1{
+                padding-top: 10px;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <div class="container place" onKeyDown="if(event.keyCode===13) send();">
+            <div class="row">
+               
+                <div class="col m3"></div>
+                <div class="col m6">
+                    <div class="card-panel z-depth-5 validate">
+                        <div class="row">
+                            <nav class="top-nav">
+                                <div class="container">
+                                    <div class="nav-wrapper"><a class="page-title"><h4 class="pad center"> Child Immunization</h4></a></div>
+                                </div>
+                            </nav>
+                        </div>
+                       <div class="row">
+                            <div class="col s12" >
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="Uname" name="username" type="text" class="validate" required>
+                                        <label for="username">Username </label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="Pass" name="password" type="password" class="validate" required>
+                                        <label for="password">Password</label>
+                                    </div>
+                                </div>
+                                <input type="submit" onclick="send()" class="waves-effect waves-light btn pad1 center" value="Log in">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  Scripts-->
+        <script src="../scripts/jquery-2.1.4.min.js.download"></script>
+        <script>if (!window.jQuery) {
+                document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>');
+            }</script>
+        
+        
+    </body>
+</html>

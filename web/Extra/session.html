@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script src="../jquery.js"></script>
+        <title>session</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"../out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                         alert(data);
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            var view=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"../Know_servlet",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                         alert(data);
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                        
+                        
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            
+        </script>
+    </head>
+    <body>
+        <div id="demo"><button onclick="view()">see profile</button></div>
+        <div><button onclick="out()">log out</button></div>
+    </body>
+</html>

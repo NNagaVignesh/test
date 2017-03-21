@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>BITAPPS-Details</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../JS/angular.js"></script>
+        <script src="../JS/jquery.js"></script>
+        <link href="../CSS/prism/prism.css" rel="stylesheet" type="text/css">
+         <link href="../CSS/ghpages.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="./jquery.js"></script>
+        <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }  </script>
+        <script src="../prism/prism.js"></script>
+        <script src="../materialize/materialize.js"></script>
+        <script src="../JS/init.js"></script>
+        <style>
+            body{
+                
+                font-family: sans-serif;
+            }
+            .con
+            {
+                width:100%;
+                height:auto;
+               
+                    
+            }
+            .contain
+            {
+             margin-top: 5%;   
+             margin-left: 20%;
+             margin-right: 20%;
+            }
+            .sect1
+            {
+             width:100%;
+             background-color: #4CAF50;
+             float: left;
+             font-weight: bold;
+             font-color:white;
+            }
+            .sect2
+            {
+              width:100%;  
+             float:left;
+             
+            }
+            body{
+                width:100%;
+                height:100%;
+                
+                               
+            }
+           /* .btn{
+                border:none;
+                background-color: red;
+                height:4em;
+                width:5em;
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:100em;
+               
+          
+            }
+            .btn1{
+                border:none;
+                background-color: #fff;
+                height:4em;
+                width:6em;
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:106em;
+               
+          
+            }*/
+            .head
+            {
+                background-color: #EE6E73;
+                text-align: center;
+                color:white;
+            }
+            table {
+              border-collapse: collapse;
+              border: none;
+               width: 100%;
+                    }
+
+            
+           
+                .modal1 {
+                        display: none; /* Hidden by default */
+                        position: fixed; /* Stay in place */
+                        z-index: 1000; /* Sit on top */
+                        padding-top: 100px; /* Location of the box */
+                        left: 0;
+                        top: 0;
+                        width: 100%; /* Full width */
+                        height: 100%; /* Full height */
+                        overflow: auto; /* Enable scroll if needed */
+                        background-color: rgb(0,0,0); /* Fallback color */
+                        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                    }
+
+                    /* Modal Content */
+                    .modal-content {
+                        position: relative;
+                        background-color: #fefefe;
+                        margin: auto;
+                        padding: 0;
+                        border: 1px solid #888;
+                        width: 80%;
+                        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+                        -webkit-animation-name: animatetop;
+                        -webkit-animation-duration: 0.4s;
+                        animation-name: animatetop;
+                        animation-duration: 0.4s
+                    }
+
+                    /* Add Animation */
+                    @-webkit-keyframes animatetop {
+                        from {top:-300px; opacity:0}
+                        to {top:0; opacity:1}
+                    }
+
+                    @keyframes animatetop {
+                        from {top:-300px; opacity:0}
+                        to {top:0; opacity:1}
+                    }
+
+                    /* The Close Button */
+                    .close {
+                        color: white;
+                        margin-right:15px;
+                        
+                        float: right;
+                        font-size: 38px;
+                        font-weight: bold;
+                    }
+
+                    .close:hover,
+                    .close:focus {
+                        color: #DBD9D9;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+
+                    .modal-header {
+                        padding: 2px 16px;
+                        background-color: red;
+                        color: white;
+                    }
+
+                    .modal-body {padding: 2px 16px;}
+
+                    .modal-footer {
+                        padding: 2px 16px;
+                        background-color: red;
+                        color: white;
+                    }
+                    .place{
+                        margin-top:30px;
+                    }
+        </style>
+    </head>
+    <body ng-app="myApp">
+       
+        <header>
+            <nav class="top-nav"><div class="container"><div class="nav-wrapper"><a class="page-title">Vaccination Alert</a></div></div></nav>
+            <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons" style="margin-left:-75px;margin-top:35px;">menu</i></a></div>
+            <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0%);"><li class="logo"><a id="logo-container" href="../Images/bitlogo.svg" class="brand-logo"><object id="front-page-logo" type="image/svg+xml" data="../Images/bitlogo.svg">Your browser does not support SVG</object></a></li>
+            <li style="text-align:center;"><a href="./form1.html">New Entry</a></li>
+            <li style="text-align:center;"><a href="./table1.html">View Details</a></li>
+            <li style="text-align:center;"><a href="./sms-info.html">SMS</a></li>
+            <li style="text-align:center;"><a onclick="out()" href="javascript:void(0);">Log Out</a></li>
+            </ul></header>
+            
+        
+            
+        <div class="con row" >
+             <div class="col m3 "></div>
+          <!--  <div id="menu">
+                <ul id="menu-bar">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Products</a>
+                 <ul>
+                  <li><a href="#">Products Sub Menu 1</a></li>
+                  <li><a href="#">Products Sub Menu 2</a></li>
+                  <li><a href="#">Products Sub Menu 3</a></li>
+                  <li><a href="#">Products Sub Menu 4</a></li>
+                 </ul>
+                </li>
+                <li><a href="#">Services</a>
+                 <ul>
+                  <li><a href="#">Services Sub Menu 1</a></li>
+                  <li><a href="#">Services Sub Menu 2</a></li>
+                  <li><a href="#">Services Sub Menu 3</a></li>
+                  <li><a href="#">Services Sub Menu 4</a></li>
+                 </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+               </ul>
+            </div>-->
+           
+          <!--  <div class="contain"> 
+            <div class="sect1" id="Orinfo">
+                <p>Name:</p>
+                <p>Organiser id:</p>
+                <p>Type:</p>
+                <p>Dept:</p>
+            </div>-->
+          <div class="col m9 ">
+          <div class="sect2"  ng-controller="myCtrl" id="Proinfo">
+             
+              <div class="row" >
+                  <div class="input-field col m2 s5">
+                      <input ng-model="search.fname" placeholder="Father's name">
+                     </div>
+                  <div class="input-field col m2 s5">
+                      <input ng-model="search.mname" placeholder="Mother's name">
+                    </div>  
+              <div class="input-field col m1 s3">
+                  <input ng-model="search.sex" placeholder="Sex">
+              </div>
+              <div class="input-field col m1 s3">
+                  <input ng-model="search.dob" placeholder="Dob">
+              </div>
+                  <div class="input-field col m1 s3">
+              <input ng-model="search.contact_1" placeholder="Contact">
+                  </div>
+              </div>
+              <br>
+                <table class="centered responsive-table " border="1">
+                    
+                    <thead>
+                    <tr style="cursor:default;background-color: #EE6E73; color:white;">
+                        <th>Father's Name</th>
+                        <th>Mother's Name</th>
+                        <th>Child's Sex</th>
+                        <th>DOB</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>Next Estimated Vaccination date</th>
+                        
+                    </tr></thead>
+                    <tbody>
+                   
+                       <tr ng-repeat="x in records | filter:search" ng-click="show(records.indexOf(x))" style="cursor:pointer">
+                        <td>{{x.fname}}</td>
+                        <td>{{x.mname}}</td>
+                        <td>{{x.sex}}</td>
+                        <td>{{x.dob}}</td>
+                        <td>{{x.contact_1}}</td>
+                        <td>{{x.address}}</td>
+                        <td>{{x.estvac}}</td>
+                        
+                    </tr>
+                    </tbody>
+                </table>
+                <div id="myModal" class="modal1">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                  
+                <div class="head">
+                  <span class="close">x</span>
+                  <h2>{{records[change].fname}}   {{records[change].mname}}</h2>
+                </div>
+                  <div class="modal-body">
+                  
+                  <p>Vaccinate your {{records[change].sexdesc}} with BCG, OPV, HepB before : {{records[change].v1}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with OPV1, Penta-1, IPV1 before   :    {{records[change].v2}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with OPV2, Penta-2 before   :   {{records[change].v3}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with OPV3, Penta-3 before   :   {{records[change].v4}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with Measles-1/MR-1, Vit A-1, JE-1 before   :   {{records[change].v5}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with Measles2/MR-2, Vit A-2, JE-2 before    :    {{records[change].v6}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with OPV Booster, DPT First Booster before  :  {{records[change].v7}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with DPT Second Booster before  :  {{records[change].v8}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with TT First Booster before    :    {{records[change].v9}} </p>
+                  <p>Vaccinate your {{records[change].sexdesc}} with TT Second Booster before   :   {{records[change].v10}} </p>
+                </div>
+                <div class="footer">
+                  <h3>Don't forget to vaccinate your child </h3>
+                </div>
+              </div>
+
+            </div>
+            </div>
+          </div>
+           
+            
+        </div>
+           
+          <script>
+               var newe=function(){
+            window.location.href="./form1.html";
+        };
+              var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"../out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                         console.log(data);
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                       red();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+                 
+            };
+            var red=function(){
+                console.log("red");
+                window.location.href="../index.html";
+            };
+                var app = angular.module("myApp", []);
+                  
+                    app.controller("myCtrl",function($scope,$http) {
+                          $scope.change='';
+                          $http({
+                           method: 'POST',
+                            url: '../Parse'
+                            }).then(function successCallback(response) {
+                                $scope.records=response.data.values;
+                               // alert("Success"+response.data.Addresses[0].AccountId);
+                               //alert(response.data);
+                              }, function errorCallback(response) {
+                                  alert("Fail!!!!!!!!!!!!!!\n"+response);
+                              }); 
+                         $scope.show=function(x) {
+                             $scope.change=x;
+                             modal.style.display = "block";
+                           };
+                    /*  $scope.records = {
+                            "12":{
+                            "pid" : "12",
+                            "Dept" : "Germany",
+                            "Projectname":"sinkme"
+                             }
+                            ,
+                            "13":{
+                             "pid" : "13",
+                             "Dept" : "Sweden",
+                            "Projectname":"sinkme2"
+                             },
+                            "14":{
+                             "pid" : "14",
+                             "Dept" : "Mexico",
+                            "Projectname":"sinkme"
+                            },
+                             "15":{
+                            "pid" : "15",
+                            "Dept" : "Austria",
+                            "Projectname":"sinkme"
+                            }
+                                };*/
+                        });
+                       
+                        var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+                           
+
+                            // Get the <span> element that closes the modal
+                            var span = document.getElementsByClassName("close")[0];
+
+                            // When the user clicks the button, open the modal
+                           
+
+                            // When the user clicks on <span> (x), close the modal
+                            span.onclick = function() {
+                                modal.style.display = "none";
+                            }
+
+                            // When the user clicks anywhere outside of the modal, close it
+                            window.onclick = function(event) {
+                                if (event.target == modal) {
+                                    modal.style.display = "none";
+                                }
+                            }
+                        </script>  
+       
+    </body>
+</html>

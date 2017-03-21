@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>BITAPPS</title>  
+        <link href="./prism/prism.css" rel="stylesheet" type="text/css">
+        <link href="./materialize/clockpicker.css" rel="stylesheet" type="text/css">
+         <link href="./ghpages.css" type="text/css" rel="stylesheet" media="screen,projection">
+        
+        <script src="./jquery.js"></script>
+        <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }  </script>
+        <script src="./prism/prism.js"></script>
+        <script src="./materialize/materialize.js"></script>
+        <script src="./materialize/clockpicker.js"></script>
+        <script src="./init.js"></script>
+        <style>
+             .btn1{
+                
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:90em;
+               
+          
+            }
+            .btn2{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:100em;
+               
+          
+            }
+            .btn3{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:93em;
+               
+          
+            }
+            .pad{
+                padding-top: 20px;
+            }
+            .pad1{
+                padding-top: 10px;
+            }
+        </style>
+        
+        <script>
+             var submit=function(){
+                  var bd_regno=$('#bd_regno').val();
+                  var rcontact=$('#rcontact').val();
+                  var div_code=$('#div_code').val();
+                  var l=$('#l input:radio:checked').val();
+                  var dob=$('#dob').val();var tob=$('#tob').val();
+                  var sex=$('#sex input:radio:checked').val();
+                  var bd_childsext=1;
+                  var bd_childname=$('#bd_childname').val();
+                  var bd_fatname=$('#bd_fatname').val();
+                  var bd_motname=$('#bd_motname').val();
+                  var bd_infadd1=$('#bd_infadd1').val();
+                  var bd_infadd2=$('#bd_infadd2').val();
+                  var bd_infadd3=$('#bd_infadd3').val();
+                  var bd_infpin=$('#infpin').val();
+                  var bd_fadd1=$('#bd_fadd1').val();
+                  var bd_fadd2=$('#bd_fadd2').val();
+                  var bd_fadd3=$('#bd_fadd3').val();
+                  var bd_fpin=$('#bd_fpin').val();
+                  var fcontact=$('#fcontact').val();
+                  var mcontact=$('#mcontact').val();
+                  console.log(l);console.log(sex);
+                  dob=dob+" "+tob+":00";
+                  console.log(dob);
+                  console.log("bd_regno:"+bd_regno+"\n"+"div_code:"+div_code+"\n"+"l:"+l+"\n"+"dob:"+dob+"\n"+"sex:"+sex+"\n"+"bd_childsext:"+bd_childsext+"\n"+"bd_childname:"+bd_childname+"\n"+"bd_fatname:"+bd_fatname+"\n"+"bd_motname:"+bd_motname+"\n"+"bd_infadd1:"+bd_infadd1+"\n"+"bd_infadd2:"+bd_infadd2+"\n"+"bd_infadd3:"+bd_infadd3+"\n"+"bd_infpin:"+bd_infpin+"\n"+"bd_fadd1:"+bd_infadd1+"\n"+"bd_fadd2:"+bd_fadd2+"\n"+"bd_fadd3:"+bd_fadd3+"\n"+"bd_fpin:"+bd_fpin+"\n"+"fcontact:"+fcontact+"\n"+"mcontact:"+mcontact);
+                   $.ajax({
+                url:"Insert",
+                data: {"bd_regno":""+bd_regno,"div_code":""+div_code,"l":""+l,"dob":""+dob,"sex":""+sex,"bd_childsext":""+bd_childsext,"bd_childname":""+bd_childname,"bd_fatname":""+bd_fatname,"bd_motname":""+bd_motname,"bd_infadd1":""+bd_infadd1,"bd_infadd2":""+bd_infadd2,"bd_infadd3":""+bd_infadd3,"bd_infpin":""+bd_infpin,"bd_fadd1":""+bd_infadd1,"bd_fadd2":""+bd_fadd2,"bd_fadd3":""+bd_fadd3,"bd_fpin":""+bd_fpin,"fcontact":""+fcontact,"mcontact":""+mcontact},
+                type:"post",
+                success:function(data){
+                    var a=data.toString();
+                    console.log("a:"+a);
+                    if(a==="Inserted"||a==="Something went wrong try again"){
+                   console.log("success");
+                   alert(data);
+                   $('.frm').find('input').val('');
+                   return false;
+                   console.log(document.getElementById("frm"));
+                }
+                  else{
+                      alert(data);
+                      window.location.href="./test.html";
+                      return false;
+                  }        
+    },
+                error:function(data){
+                    alert("error");
+                    return false;
+                }
+            }
+                );
+                return false;
+            };
+            
+            var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                        out1();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            var out1=function(){
+                window.location.href="./index.html";
+            };
+            var view=function(){
+            window.location.href="./table1.html";
+        };
+            
+        </script>
+        
+    </head>
+    <body >
+        <div class="row">
+        <div class="col m5 "></div>
+    <div class="col m4 "></div>
+    <div class="col m3 ">
+                    
+                    <button class="btn " onclick="view()">View data</button>
+                    <button class="btn " onclick="out()">Log Out</button>
+                    </div></div>
+        <div class="container">
+            <div class="row">
+                <div class="col m3 "></div>
+                
+                
+                    
+                <div class="col m5 ">
+                    <div class="card-panel z-depth-10">
+                        <div class="frm validate" id="frm"  >
+                            
+                            <div class="row">
+                                <nav class="top-nav">
+                                    <div class="container">
+                                        
+                                        <p > <div class="nav-wrapper"><a class="page-title"><h4  class="pad center"> Registration Form </h4></a></div> </p>
+
+                                    </div>
+                                </nav>
+                            </div>
+                            
+                            <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Registration Number" name="bd_regno" id="bd_regno" type="text" class="validate" required>
+                                    <label for="bd_regno" data-error="wrong" data-success="right">Registration Number</label>
+                                </div>
+                                
+                            </div>
+                            <div class="row" >
+                                <div class="col s12">
+                                    <p>Hospital Details</p>
+                                    
+                                 </div>
+                            </div> 
+                            <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Hospital Name" name="bd_hname" id="bd_hname" type="text" class="validate" required>
+                                    <label for="bd_hname" data-error="wrong" data-success="right">Hospital Name</label>
+                                </div>
+                            </div>   
+                            <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Division Code" name="div_code" id="div_code" type="number" class="validate" required>
+                                    <label for="div_code" data-error="wrong" data-success="right">Division Code</label>
+                                </div>
+                            </div>    
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Street Adress" id="bd_infadd1" name="bd_infadd1" type="text" class="validate" required>
+                                    <label for="bd_infadd1" data-error="wrong" data-success="right">Street</label>
+                                </div></div>
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter City" id="bd_infadd2" name="bd_infadd2" type="text" class="validate" required>
+                                    <label for="bd_infadd2" data-error="wrong" data-success="right">City</label>
+                                </div></div>
+                              <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter State" id="bd_infadd3" name="bd_infadd3" type="text" class="validate" required>
+                                    <label for="bd_infadd3" data-error="wrong" data-success="right">State</label>
+                                </div></div>
+                             <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Pincode" id="infpin" min="100000" max="999999" name="infpin" type="number" class="validate" required>
+                                    <label for="infpin" data-error="Please enter the correct pin code" data-success="right">Pincode</label>
+                                </div></div>
+                            <div class="row" >
+                                <div class="col s12">
+                                    <p>Child Details</p>
+                                    
+                                 </div>
+                            </div> 
+                            <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Child Name" name="bd_childname" id="bd_childname" type="text" class="validate" >
+                                    <label for="bd_childname" data-error="wrong" data-success="right">Child Name</label>
+                                </div>        
+                            </div>    
+                             <div class="row" >
+                                <div class="input-field col s6">
+                                    <input  name="dob" id="dob" type="text" class=" datepicker1" required>
+                                    <label for="dob" >Date OF Birth</label>
+                                </div>  
+                                 <div class="input-field col s6">
+                                    <input  name="tob" id="tob" type="time" class="timepicker" required>
+                                    <label for="tob" >Time of Birth</label>
+                                </div>    
+                            </div>  
+                            
+                            <div class="row" >
+                            <div class="col s12" id="sex">
+                                
+                             <input class="with-gap" name="group1" type="radio" id="sex1" value="male"  />
+                             <label for="sex1">Male</label>
+                             <input class="with-gap" name="group1" type="radio" id="sex2" value="female"  />
+                             <label for="sex2">Female</label>
+                                </div>  
+                            </div>
+                            <div class="row" >
+                            <div class="col s12" id="l">
+                             <input class="with-gap" name="group2" type="radio" id="live1"  value="alive" />
+                             <label for="live1">Alive</label>
+                             <input class="with-gap" name="group2" type="radio" id="live2" value="dead"   />
+                             <label for="live2">Dead</label>
+                                </div>  
+                            </div>
+                            
+                            <div class="row" >
+                                <div class="col s12">
+                                    <p>Parent's Details</p>
+                                    
+                                 </div>
+                            </div> 
+                             <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Father's Name" name="bd_fatname" id="bd_fatname" type="text" class="validate" required>
+                                    <label for="bd_fatname" data-error="wrong" data-success="right">Father's Name</label>
+                                </div>        
+                            </div> 
+                            
+                            <div class="row" >
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Mother's Name" name="bd_motname" id="bd_motname" type="text" class="validate" >
+                                    <label for="bd_motname" data-error="wrong" data-success="right">Mother's Name</label>
+                                </div>        
+                            </div> 
+                             <div class="row" >
+                                <div class="col s12">
+                                    <p> Residential Address</p>
+                                    
+                                 </div>
+                            </div> 
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Street Address" id="bd_fadd1" name="bd_add1" type="text" class="validate" required>
+                                    <label for="bd_fadd1" data-error="wrong" data-success="right">Street</label>
+                                </div></div>
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter City" id="bd_fadd2" name="bd_fadd2" type="text" class="validate" required>
+                                    <label for="bd_fadd2" data-error="wrong" data-success="right">City</label>
+                                </div></div>
+                              <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter State" id="bd_fadd3" name="bd_fadd3" type="text" class="validate" required>
+                                    <label for="bd_fadd3" data-error="wrong" data-success="right">State</label>
+                                </div></div>
+                             <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Pincode" id="bd_fpin" min="100000" max="999999" name="bd_fpin" type="number" class="validate" required>
+                                    <label for="bd_fpin" data-error="wrong" data-success="right">Pincode</label>
+                                </div></div>
+                             <div class="row" >
+                                <div class="col s12">
+                                    <p>Contact Details</p>
+                                    
+                                 </div>
+                            </div> 
+                             <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Father's Mobile Number" id="fcontact" min="1000000000" max="9999999999" name="fcontact" type="number" class="validate" required>
+                                    <label for="fcontact" data-error="wrong" data-success="right">Father's Mobile Number</label>
+                                </div></div>
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Mother's Mobile Number" id="mcontact" min="1000000000" max="9999999999" name="mcontact" type="number" class="validate">
+                                    <label for="mcontact" data-error="wrong" data-success="right">Mother's Mobile Number</label>
+                                </div></div>
+                            <div class="row">    
+                                <div class="input-field col s12">
+                                    <input placeholder="Enter Residential Phone Number" id="rcontact" min="1000000000" max="9999999999" name="rcontact" type="number" class="validate">
+                                    <label for="rcontact" data-error="please enter your correct contact number" data-success="right"> Residential Phone Number</label>
+                                </div></div>
+                           
+                            <div class="row">
+                                <div class="input-field col s12">
+                                                                        <input type="submit" onclick="submit()" class="waves-effect waves-light btn  center" value="Submit">
+
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+        </div>
+  
+    <!--  Scripts-->
+    <script>if (!window.jQuery) {
+document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>');
+
+}
+    $(document).ready(function () {
+
+        $('.datepicker1').pickadate({
+             selectMonths: true,
+             selectYears: true,
+             format: 'yyyy-mm-dd'
+                   
+        });
+        $('.timepicker').pickatime({
+    default: 'now',
+    twelvehour: false, // change to 12 hour AM/PM clock from 24 hour
+    donetext: 'OK',
+  autoclose: false,
+  vibrate: true // vibrate the device when dragging clock hand
+});
+     
+    });
+    
+    </script>
+    
+</body>  
+
+
+
+
+
+
+</html>

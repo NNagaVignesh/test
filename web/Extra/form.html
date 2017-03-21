@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script src="./jquery.js"></script>
+        <title>Fill</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+             .btn1{
+                
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:90em;
+               
+          
+            }
+            .btn2{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:97em;
+               
+          
+            }
+            .btn3{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:93em;
+               
+          
+            }
+        </style>
+        <script>
+            var submit=function(){
+                  var bd_regno=$('#bd_regno').val();
+                  var bd_regyr=$('#bd_regyr').val();
+                  var div_code=$('#div_code').val();
+                  var bd_regdt=$('#bd_regdt').val();
+                  var l=$('#l input:radio:checked').val();
+                  var dob=$('#dob').val();
+                  var sex=$('#sex input:radio:checked').val();
+                  var bd_childsext=$('#bd_childsext').val();
+                  var bd_childname=$('#bd_childname').val();
+                  var bd_fatname=$('#bd_fatname').val();
+                  var bd_motname=$('#bd_motname').val();
+                  var bd_infadd1=$('#bd_infadd1').val();
+                  var bd_infadd2=$('#bd_infadd2').val();
+                  var bd_infadd3=$('#bd_infadd3').val();
+                  var bd_infpin=$('#bd_infpin').val();
+                  var bd_fadd1=$('#bd_fadd1').val();
+                  var bd_fadd2=$('#bd_fadd2').val();
+                  var bd_fadd3=$('#bd_fadd3').val();
+                  var bd_fpin=$('#bd_infpin').val();
+                  var fcontact=$('#fcontact').val();
+                  var mcontact=$('#mcontact').val();
+                $.ajax({
+                url:"Insert",
+                data: {"bd_regno":""+bd_regno,"bd_regyr":""+bd_regyr,"div_code":""+div_code,"bd_regdt":""+bd_regdt,"l":""+l,"dob":""+dob,"sex":""+sex,"bd_childsext":""+bd_childsext,"bd_childname":""+bd_childname,"bd_fatname":""+bd_fatname,"bd_motname":""+bd_motname,"bd_infadd1":""+bd_infadd1,"bd_infadd2":""+bd_infadd2,"bd_infadd3":""+bd_infadd3,"bd_infpin":""+bd_infpin,"bd_fadd1":""+bd_infadd1,"bd_fadd2":""+bd_fadd2,"bd_fadd3":""+bd_fadd3,"bd_fpin":""+bd_fpin,"fcontact":""+fcontact,"mcontact":""+mcontact},
+                type:"post",
+                success:function(data){
+                    var a=data.toString();
+                    console.log("a:"+a);
+                    if(a==="Inserted"||a==="Something went wrong try again"){
+                   console.log("success");
+                   alert(data);
+                   $('.frm').find('input:text').val('');
+                   
+                   console.log(document.getElementById("frm"));
+                }
+                  else{
+                      alert(data);
+                      window.location.href="./index.html";
+                  }        
+    },
+                error:function(data){
+                    alert("error");
+                }
+            }
+                );
+            };
+            var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                        out1();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            var out1=function(){
+                window.location.href="./index.html";
+            };
+            var view=function(){
+            window.location.href="./table.html";
+        };
+            
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      
+</head>
+<body>
+ <button class="btn2 btn" onclick="out()">Log Out</button>
+ <button class="btn1 btn" onclick="view()">View data</button>
+ 
+<div class="container">
+    
+  <h2>Vaccination Registration</h2>
+  <div id="frm" class="frm">
+    <div class="form-group">
+      <label for="regno">Registration No:</label>
+      <input type="text" class="form-control" id="bd_regno" placeholder="Enter Registration no" >
+    </div>
+    <div class="form-group">
+      <label for="regyr">Registration Year:</label>
+      <input type="text" class="form-control" id="bd_regyr" placeholder="Enter Registration year">
+    </div>
+    <div class="form-group">
+      <label for="divcode">Division code:</label>
+      <input type="text" class="form-control" id="div_code" placeholder="Enter Divison code">
+    </div>  
+    <div class="form-group">
+      <label for="regdt">Registration date:</label>
+      <input type="text" class="form-control" id="bd_regdt" placeholder="Enter Registration date  YYYY-MM-DD HH:MM:SS">
+    </div>
+    <div class="form-group" id="l">
+      <div style='font-weight:bold'>Status</div>
+      <label class="radio-inline">
+      <input type="radio" name="bd_type" value="alive">alive</label>
+      <label class="radio-inline">
+      <input type="radio" name="bd_type" value="dead">dead</label>    
+    </div>  
+      <div class="form-group">
+      <label for="Dob">Date of birth:</label>
+      <input type="text" class="form-control" id="dob" placeholder="Enter DOB YYYY-MM-DD HH:MM:SS">
+    </div>
+    <div class="form-group" id="sex">
+      <div style='font-weight:bold'>Sex</div>
+      <label class="radio-inline">
+      <input type="radio" name="bd_childsex" value="male">male</label>
+      <label class="radio-inline">
+      <input type="radio" name="bd_childsex" value="female">female</label>    
+    </div>   
+      <div class="form-group">
+      <label for="childsext">Child sext:</label>
+      <input type="text" class="form-control" id="bd_childsext" placeholder="Enter childsext">
+    </div>  
+    <div class="form-group">
+      <label for="childname">Child name:</label>
+      <input type="text" class="form-control" id="bd_childname" placeholder="Enter childname">
+    </div>
+    <div class="form-group">
+      <label for="fname">Father's name:</label>
+      <input type="text" class="form-control" id="bd_fatname" placeholder="Enter father's name">
+    </div>
+     <div class="form-group">
+      <label for="mname">Mother's name:</label>
+      <input type="text" class="form-control" id="bd_motname" placeholder="Enter mother's name">
+    </div>  
+    <div class="form-group">
+      <label for="addname">Address1:</label>
+      <input type="text" class="form-control" id="bd_infadd1" placeholder="Enter adress1">
+    </div>
+     <div class="form-group">
+      <label for="addloc">Address2:</label>
+      <input type="text" class="form-control" id="bd_infadd2" placeholder="Enter adress2">
+    </div>  
+     <div class="form-group">
+      <label for="addcity">Address3:</label>
+      <input type="text" class="form-control" id="bd_infadd3" placeholder="Enter adress3">
+    </div> 
+    <div class="form-group">
+      <label for="addpin">Pin:</label>
+      <input type="text" class="form-control" id="bd_infpin" placeholder="Enter pin">
+    </div>  
+    <div class="form-group">
+      <label for="faddname">Address1:</label>
+      <input type="text" class="form-control" id="bd_fadd1" placeholder="Enter father's adress1">
+    </div>
+     <div class="form-group">
+      <label for="faddloc">Address2:</label>
+      <input type="text" class="form-control" id="bd_fadd2" placeholder="Enter father's adress2">
+    </div>  
+     <div class="form-group">
+      <label for="faddcity">Address3:</label>
+      <input type="text" class="form-control" id="bd_fadd3" placeholder="Enter father's adress3">
+    </div> 
+    <div class="form-group">
+      <label for="faddpin">Pin:</label>
+      <input type="text" class="form-control" id="bd_fpin" placeholder="Enter father's adress pin">
+    </div>
+    <div class="form-group">
+      <label for="fcon">Father's contact:</label>
+      <input type="text" class="form-control" id="fcontact" placeholder="Enter father's contact number">
+    </div> 
+     <div class="form-group">
+      <label for="mcon">Mother's contact:</label>
+      <input type="text" class="form-control" id="mcontact" placeholder="Enter mother's contact number">
+    </div> 
+      
+      <button type="submit" class="btn btn-default" onclick="submit()">Submit</button>
+      </div>
+  </div>
+
+
+</body>
+</html>
+ <!--/*$('.frm').find('input:text').val('');
+                   $('.radio-inline').prop('checked', false);*/-->

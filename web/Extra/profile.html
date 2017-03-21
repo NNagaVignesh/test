@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script src="./jquery.js"></script>
+        <title>Profile</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+             .btn{
+                border:none;
+                background-color: red;
+                height:4em;
+                width:5em;
+                cursor: pointer;
+                position:absolute;
+                top:20em;
+                left:45em;
+               
+          
+            }
+             .btn1{
+                border:none;
+                background-color: red;
+                height:4em;
+                width:5em;
+                cursor: pointer;
+                position:absolute;
+                top:20em;
+                left:52em;
+               
+          
+            }
+             .btn2{
+                border:none;
+                background-color: red;
+                height:4em;
+                width:5em;
+                cursor: pointer;
+                position:absolute;
+                top:20em;
+                left:59em;
+               
+          
+            }
+            .btn3{
+                border:none;
+                background-color: red;
+                height:4em;
+                width:5em;
+                cursor: pointer;
+                position:absolute;
+                top:20em;
+                left:67em;
+               
+          
+            }
+        </style>
+         <script>
+        var view=function(){
+            window.location.href="./table.html";
+        };
+        var newe=function(){
+            window.location.href="./form.html";
+        };
+        var upload=function(){
+            window.location.href="./upload.html";
+        };
+       var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                        out1();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            var out1=function(){
+                window.location.href="./index.html";
+            };
+            
+    </script>
+    </head>
+    <body>
+        <div style="font-family: 'sans-serif';font-size:50px;">WELCOME!!</div>
+        <button class="btn" onclick="view()"><span style="color:white">View data</span></button>
+        <button class="btn1" onclick="newe()"><span style="color:white">New Entry</span></button>
+        <button class="btn2" onclick="upload()"><span style="color:white">Upload</span></button>
+        <button class="btn3" onclick="out()"><span style="color:white">Log Out</span></button>
+    </body>
+   
+</html>

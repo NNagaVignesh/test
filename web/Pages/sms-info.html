@@ -1,0 +1,159 @@
+<html>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>BITAPPS-SMS Information</title>  
+        <link href="../prism/prism.css" rel="stylesheet" type="text/css">
+        <link href="../materialize/clockpicker.css" rel="stylesheet" type="text/css">
+        <link href="../CSS/ghpages.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="../CSS/maticon.css" rel="stylesheet" type="text/css">
+        <link href="../CSS/maticon-min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="../JS/jquery.js"></script>
+        <script>if (!window.jQuery) { document.write('<script src="bin/jquery-2.1.1.min.js"><\/script>'); }  </script>
+        <script src="../prism/prism.js"></script>
+        <script src="../materialize/materialize.js"></script>
+        <script src="../materialize/clockpicker.js"></script>
+        <script src="../JS/init.js"></script>
+        <script type="text/javascript">
+
+        // Wait for the page to load first
+        window.onload = function() {
+
+          //Get a reference to the link on the page
+          // with an id of "mylink"
+          var a = document.getElementById("mylink");
+
+          //Set code to run when the link is clicked
+          // by assigning a function to "onclick"
+          a.onclick = function() {
+
+            
+            return false;
+          };
+        };
+    </script>
+        <style>
+             .btn1{
+                
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:90em;
+               
+          
+            }
+            .btn2{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:100em;
+               
+          
+            }
+            .btn3{
+               
+                cursor: pointer;
+                position:absolute;
+                top:1.5em;
+                left:93em;
+               
+          
+            }
+            .pad{
+                padding-top: 20px;
+            }
+            .pad1{
+                padding-top: 10px;
+            }
+        </style>
+        
+        <script>
+            $( document ).ready(function() {
+                console.log("sms");
+                var a;
+               $.ajax(
+                     {
+                    
+                     url:"../sms_servlet",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        a=data.toString();
+                         $("div.sms").html("<ul class=\"collection with-header\"><li class=\"collection-header\"><h5>SMS - Sent to:</h5></li>"+a+"</ul>");
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }
+                        var a=data.toString();*/
+                        
+                     
+                 },
+                 error:function(data){
+                     alert("error  "+data);
+                 }
+                 });
+                 console.log("a:"+a);
+                 
+             });
+            var out=function(){
+                 console.log("session");
+                 $.ajax(
+                     {
+                    
+                     url:"../out",
+                     data: {"Un":"1"},
+                     type:'post',
+                     
+                     success:function(data)
+                     {
+                        
+                         
+                         /*if(data.redirect){
+                             alert("if");
+                             window.location.href=data.redirect;
+                         }*/
+                        var a=data.toString();
+                        out1();
+                     
+                 },
+                 error:function(data){
+                     alert("error"+data);
+                 }
+                 });
+            };
+            var out1=function(){
+                window.location.href="../index.html";
+            };
+            var view=function(){
+            window.location.href="./table1.html";
+        };
+            
+        </script>
+        
+    </head>
+    <body >
+        
+        <header>
+            <nav class="top-nav"><div class="container"><div class="nav-wrapper"><a class="page-title">Vaccination Alert</a></div></div></nav>
+            <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons" style="margin-left:-75px;margin-top:35px;">menu</i></a></div>
+            <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0%);"><li class="logo"><a id="logo-container" href="../Images/bitlogo.svg" class="brand-logo"><object id="front-page-logo" type="image/svg+xml" data="../Images/bitlogo.svg">Your browser does not support SVG</object></a></li>
+            <li style="text-align:center;"><a href="./form1.html">New Entry</a></li>
+            <li style="text-align:center;"><a href="./table1.html">View Details</a></li>
+            <li style="text-align:center;"><a href="./sms.html">SMS</a></li>
+            <li style="text-align: center;"><a onclick="out()" href="javascript:void(0);">Log Out</a></li>
+            </ul></header>
+        <div class="row">
+                <div class="col m3 "></div>
+                    <div class="col m5 ">
+                    <div class="card-panel z-depth-10">
+                        <div class="sms" ></div>
+                    </div>
+                </div>
+        </div>
+        
+    </body>
+</html>
